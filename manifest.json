@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Barcode PDF Generator",
+    "version": "1.0",
+    "description": "Generate PDF with barcode from Wildberries page",
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["https://seller.wildberries.ru/new-goods/created-cards"],
+        "js": ["content.js", "jspdf.min.js", "JsBarcode.all.js","fetch-jsonp.min.js"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["jspdf.min.js", "JsBarcode.all.js","fetch-jsonp.min.js"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "action": {
+      "default_icon": "icon.png",
+      "default_title": "Generate PDF"
+    }
+  }
+  
